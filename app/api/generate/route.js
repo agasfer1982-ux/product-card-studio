@@ -1,6 +1,5 @@
-import Anthropic from "@anthropic-ai/sdk";
-
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+import Groq from "groq-sdk";
+const client = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const TEMPLATES = {
   standard: `Ты — копирайтер интернет-магазина. Создай HTML-карточку товара по тексту пользователя.
@@ -45,12 +44,16 @@ export async function POST(req) {
     const catName = CAT_NAMES[category] || "любая";
     const systemPrompt = tpl.replace("{CAT}", catName);
 
-    const message = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 1500,
-      system: systemPrompt,
-      messages: [{ role: "user", content: text }],
-    });
+const completion = await client.chat.completions.create({
+  model: "llama-3.3-70b-versatile",
+  max_tokens: 1500,
+  messages: [
+    { role: "system", content: systemPrompt },
+    { role: "user", content: text }
+  ],
+});
+let html = completion.choices[0]?.message?.content || "";
+html = html.replace(/^```html?\s*/i, "").replace(/\s*```$/i, "").trim();
 
     let html = message.content[0]?.text || "";
     html = html.replace(/^```html?\s*/i, "").replace(/\s*```$/i, "").trim();
