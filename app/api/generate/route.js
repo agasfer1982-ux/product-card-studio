@@ -75,7 +75,7 @@ export async function POST(req) {
 
     const completion = await client.chat.completions.create({
       model: "llama-3.3-70b-versatile",
-      max_tokens: 2000,
+      max_tokens: 4000,
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: text }
