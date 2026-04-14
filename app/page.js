@@ -6,9 +6,7 @@ const CATEGORIES = [
   { id: "games", label: "Видеоигры" },
   { id: "figures", label: "Фигурки" },
   { id: "boardgames", label: "Настолки" },
-  { id: "movies_collection", label: "Кино — сборники" },
-  { id: "movies_awards", label: "Кино — с наградами" },
-  { id: "movies_extras", label: "Кино — доп. материалы" },
+  { id: "movies", label: "Кино" },
   { id: "music", label: "Музыка" },
 ];
 
