@@ -9,6 +9,7 @@ const CATEGORIES = [
   { id: "movies_collection", label: "Кино — сборники" },
   { id: "movies_awards", label: "Кино — с наградами" },
   { id: "movies_extras", label: "Кино — доп. материалы" },
+  { id: "music", label: "Музыка" },
 ];
 
 const TODAY = new Date().toDateString();
