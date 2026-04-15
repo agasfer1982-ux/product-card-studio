@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 const CATEGORIES = [
   { id: "books", label: "Книги" },
+  { id: "audiobooks", label: "Аудиокниги" },
   { id: "games", label: "Видеоигры" },
   { id: "digital", label: "Цифровые игры" },
   { id: "figures", label: "Фигурки" },
